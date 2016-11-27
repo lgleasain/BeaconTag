@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "138879308920",
+    "firebase_url": "https://beacon-tag.firebaseio.com",
+    "project_id": "beacon-tag",
+    "storage_bucket": "beacon-tag.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138879308920:android:83ff92cb2eed4741",
+        "android_client_info": {
+          "package_name": "com.polyglotprogramminginc.beacontag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138879308920-u6fognu8u95cmima9f9089f1ef34nia2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbpUg6b5Gxtjq3HycZVJXB42Y6-9uz198"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

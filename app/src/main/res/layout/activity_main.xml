@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="mainActivityData"
+            type="com.polyglotprogramminginc.beacontag.model.MainActivityData"></variable>
+
+        <variable
+            name="firebaseController"
+            type="com.polyglotprogramminginc.beacontag.utils.FirebaseController"></variable>
+
+        <variable
+            name="mainStatusData"
+            type="com.polyglotprogramminginc.beacontag.model.MainActivityStatusData"></variable>
+
+        <variable
+            name="mainActivity"
+            type="com.polyglotprogramminginc.beacontag.MainActivity"></variable>
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.polyglotprogramminginc.beacontag.MainActivity">
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/darker_gray"
+            android:text="@={mainStatusData.mainStatusText}"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@android:color/background_light" />
+
+        <TextView
+            android:id="@+id/metawear_adapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status"
+            android:layout_marginTop="22dp"
+            android:ems="10"
+            android:onClick="@{()->mainActivity.scan()}"
+            android:text="@={mainStatusData.adapter}" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:text="@={mainActivityData.email}"
+            android:layout_below="@+id/beaconId"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:id="@+id/beaconId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Beacon ID"
+            android:inputType="number"
+            android:text="@={mainActivityData.beaconId}"
+            android:layout_marginTop="22dp"
+            android:layout_below="@+id/metawear_adapter"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/join_leave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/email"
+            android:layout_below="@+id/email"
+            android:onClick="@{()->firebaseController.updateUser(mainActivityData)}"
+            android:text="Join" />
+
+        <Button
+            android:id="@+id/reset_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/start_stop"
+            android:layout_below="@+id/email"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{()->firebaseController.reset()}"
+            android:text="Reset" />
+
+        <Button
+            android:id="@+id/start_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/email"
+            android:layout_marginTop="10dp"
+            android:onClick="@{()->firebaseController.startStop()}"
+            android:text="@={mainStatusData.startStopButtonText}" />
+
+        <ListView
+            android:id="@+id/players"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:listitem="@layout/player"
+            android:layout_below="@id/join_leave"
+            />
+
+    </RelativeLayout>
+</layout>
